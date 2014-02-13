@@ -113,3 +113,15 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+select {
+    font-size: 100%;
+}
+input {
+    font-size: 100%;
+}
+
+#info {
+    background: white;
+    border: 2px solid;
+}

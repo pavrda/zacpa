@@ -198,12 +198,13 @@ function onNotificationGCM(e) {
             // you might want to play a sound to get the user's attention, throw up a dialog, etc.
             if (e.foreground)
             {
-                $("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+                //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 
                 // if the notification contains a soundname, play it.
-                var my_media = new Media("/android_asset/www/"+e.soundname);
-                my_media.play();
+                //var my_media = new Media("/android_asset/www/"+e.soundname);
+                //my_media.play();
             }
+            /*
             else
             {	// otherwise we were launched because the user touched a notification in the notification tray.
                 if (e.coldstart)
@@ -211,9 +212,9 @@ function onNotificationGCM(e) {
                 else
                     $("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
             }
-
-            $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-            $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+            */
+            //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+            //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
             infoZobraz(e.payload.message+ "<br>" +e.payload.msgcnt);
             break;
 
