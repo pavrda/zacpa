@@ -35,8 +35,21 @@
         <option value="1">1</option>
         <option value="2">2</option>
     </select>
+    <div>
+        <div>Sledovat v čase:</div>
+        <select id="ulice" >
+            <option value="0">VYBERTE hodinu od</option>
+            <option value="1">1h</option>
+            <option value="2">2h</option>
+        </select>
+        <select id="ulice" >
+            <option value="0">VYBERTE hodinu do</option>
+            <option value="1">1h</option>
+            <option value="2">2h</option>
+        </select>
+    </div>
     <input id="zmenitNastaveniButton" type="button" value="Změnit nastavení" onclick="serverSend()">
-    <input id="registraceButton" type="button" value="Zaregistrovat k přijímání zpráv" onclick="registerFake()">
+    <input id="registraceButton" type="button" value="Zaregistrovat k přijímání zpráv" onclick="registraceRun()">
     <div id="home">
         <div id="app-status-div">
             <ul id="app-status-ul">
@@ -44,6 +57,7 @@
             </ul>
         </div>
     </div>
+    <div>v 0.0.2</div>
 </div>
 </body>
 </html>

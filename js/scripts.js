@@ -32,44 +32,91 @@ function registerFake()
     // odregistrace
     if(token!="")
     {
-        serverSend("odregistrace",odregistrace);
+        serverSend("odregistrace",odregistraceOK);
         return;
     }
 
     //registrace
 
-    // vola registraci
-    infoZobraz("vola registraci");
+    // vola registraci GCM
+    infoZobraz("vola registraci GCM");
     // prijata registrace
 
     // zobrazi hlasku a cislo
     infoZobraz("Zaregistrováno v GCM");
+    token = "123";
     // ulozi na server
+    serverSend("registrace",registraceOK);
     // ulozi do persistance
     infoZobraz("Uloženo na serveru");
-    window.localStorage.setItem("token","123");
+    window.localStorage.setItem("token",token);
     // TODO ulozit ulice a cisla do persistance
     $("#registraceButton").val("Odregistrovat od přijímání zpráv");
     $("#zmenitNastaveniButton").css("display","block");
 
 }
 
+function registraceRun()
+{
+    // odregistrace
+    if(token!="")
+    {
+        serverSend("odregistrace",odregistraceOK);
+        return;
+    }
+
+    register();
+}
+
 function serverSend(typ,success_callback, error_callback)
 {
-    success_callback();
+    console.log("serverSend");
+    $.ajax({
+        type: 'GET',
+        url: 'http://demo.livecycle.cz/lc/content/zacpa.POST',
+        data : {
+            typ: typ,
+            token: token
+        },
+        success: function(data) {
+            console.log("serverSend success");
+            success_callback();
+        },
+        error: function(data) {
+            console.log("serverSend error");
+            ajaxError("serverSend",typ,data);
+        }
+    });
+
 
 }
 
-function odregistrace()
+function ajaxError(source,msg,data)
+{
+    alert(source + msg);
+}
+
+function registraceOK()
+{
+    infoZobraz("Zaregistrováno!");
+    window.localStorage.setItem("token",token);
+    // TODO ulozit ulice a cisla do persistance
+    $("#registraceButton").val("Odregistrovat od přijímání zpráv");
+    $("#zmenitNastaveniButton").css("display","block");
+}
+function odregistraceOK()
 {
     // smazat celou persistanci? asi ne
     window.localStorage.removeItem("token");
+    token ="";
     infoZobraz("Odregistrováno");
+    $("#registraceButton").val("Zaregistrovat k přijímání zpráv");
+    $("#zmenitNastaveniButton").css("display","none");
 }
 
 
-
 function register() {
+    /*
     document.addEventListener("backbutton", function(e)
     {
         $("#app-status-ul").append('<li>backbutton event received</li>');
@@ -86,6 +133,8 @@ function register() {
             navigator.app.backHistory();
         }
     }, false);
+*/
+    infoZobraz("vola registraci GCM");
 
     try
     {
@@ -136,6 +185,11 @@ function onNotificationGCM(e) {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
                 console.log("regID = " + e.regid);
+
+                token = e.regid;
+                // ulozi na server
+                infoZobraz("Ukládání nastavení na server");
+                serverSend("registrace",registraceOK);
             }
             break;
 
@@ -160,6 +214,7 @@ function onNotificationGCM(e) {
 
             $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
             $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+            infoZobraz(e.payload.message+ "<br>" +e.payload.msgcnt);
             break;
 
         case 'error':
