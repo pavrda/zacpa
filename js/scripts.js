@@ -174,14 +174,14 @@ function onNotificationAPN(e) {
 
 // handle GCM notifications for Android
 function onNotificationGCM(e) {
-    $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+    //$("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
 
     switch( e.event )
     {
         case 'registered':
             if ( e.regid.length > 0 )
             {
-                $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+                //$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
                 console.log("regID = " + e.regid);
@@ -219,11 +219,13 @@ function onNotificationGCM(e) {
             break;
 
         case 'error':
-            $("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+            //$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+            infoZobraz("ERROR -> MSG:" + e.msg );
             break;
 
         default:
-            $("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+            //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+            infoZobraz("Neznámám chyba");
             break;
     }
 }
