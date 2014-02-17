@@ -23,43 +23,55 @@
     }
 
 </script>
-<div id="main" style="
-    font-size: 200%;
-    line-height: 150%;
-">
+<div id="main" class="main">
     <div id="info">start</div>
-    <select id="ulice" >
-        <option value="0" selected="selected">VYBERTE ulici</option>
-        <option value="1">neco</option>
-        <option value="2">neco2</option>
-    </select>
-    <select id="ulice" >
-        <option value="0">VYBERTE upozorneni od stavu</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-    </select>
-    <div>
-        <div>Sledovat v čase:</div>
-        <select id="ulice" >
-            <option value="0">VYBERTE hodinu od</option>
-            <option value="1">1h</option>
-            <option value="2">2h</option>
-        </select>
-        <select id="ulice" >
-            <option value="0">VYBERTE hodinu do</option>
-            <option value="1">1h</option>
-            <option value="2">2h</option>
-        </select>
-    </div>
-    <input id="zmenitNastaveniButton" type="button" value="Změnit nastavení" onclick="serverSend()">
-    <input id="registraceButton" type="button" value="Zaregistrovat k přijímání zpráv" onclick="registraceRun()">
-    <div id="home">
-        <div id="app-status-div">
-            <ul id="app-status-ul">
-            </ul>
-        </div>
-    </div>
-    <div>v 0.0.3</div>
+    <label class="label" for="checkBoxVypZap">Dostavat upozornění:</label>
+    <input class="checkBox" type="checkbox" value="vyzvednout" id="checkBoxVypZap" />
+
+    <ul class="list">
+        <li>
+            <div>
+                <h1>Ulice</h1>
+                <select id="ulice" >
+                    <option value="0" selected="selected">tunel Mrázovka: Dobříšská > odb. Radlická - 1</option>
+                    <option value="1">Zatím jenom ta jedna</option>
+                </select>
+            </div>
+            <div>
+                <h1>Hlásit od stavu:</h1>
+                <select id="stav" >
+                    <option value="1">plynulý provoz (tedy stále)</option>
+                    <option value="2">houstnoucí provoz</option>
+                    <option value="3">silný provoz</option>
+                    <option value="4">tvorba kolon vozidel</option>
+                </select>
+            </div>
+            <div>
+                <h1>Sledovat v čase:</h1>
+                <div>
+                    <h1>od:</h1>
+                    <select id="casOd" >
+                        <option value="0">VYBERTE hodinu od</option>
+                        <option value="1">1h</option>
+                        <option value="2">2h</option>
+                    </select>
+                </div>
+                <div>
+                    <h1>do:</h1>
+                    <select id="casDo" >
+                        <option value="0">VYBERTE hodinu do</option>
+                        <option value="1">1h</option>
+                        <option value="2">2h</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+
+        <input id="zmenitNastaveniButton" type="button" value="Změnit nastavení" onclick="nastaveniZmena()">
+    </ul>
+
+
+    <div>v 0.0.4</div>
 </div>
 </body>
 </html>

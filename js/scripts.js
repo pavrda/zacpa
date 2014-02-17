@@ -8,17 +8,29 @@ function onDeviceReady() {
 
     //$("#app-status-ul").append('<li>deviceready event received</li>');
     infoZobraz("deviceready event received");
+    localStorageNacti();
 
+    token = "345";
+
+}
+
+function localStorageNacti()
+{
     if(window.localStorage.getItem("token")!=null)
     {
         token = window.localStorage.getItem("token");
-        $("#registraceButton").val("Odregistrovat od přijímání zpráv");
-    } else
+    }
+    if(window.localStorage.getItem("vypZap")!=null)
     {
-        infoZobraz('Pro používání aplikaci zmáčkněte "Zaregistrovat k přijímání zpráv"');
-        $("#zmenitNastaveniButton").css("display","none");
+        var vypZap = window.localStorage.getItem("vypZap");
+        if(vypZap)
+        {
+            $( "#checkBoxVypZap").prop('checked', true);
+        }
+
     }
 
+    // TODO dalsi nastaveni
 
 }
 
@@ -52,7 +64,7 @@ function registerFake()
     window.localStorage.setItem("token",token);
     // TODO ulozit ulice a cisla do persistance
     $("#registraceButton").val("Odregistrovat od přijímání zpráv");
-    $("#zmenitNastaveniButton").css("display","block");
+
 
 }
 
@@ -68,23 +80,53 @@ function registraceRun()
     register();
 }
 
-function serverSend(typ,success_callback, error_callback)
+function nastaveniZmena()
+{
+    serverSend(nastaveniZmenaOk,ajaxError);
+}
+
+function serverSend(success_callback, error_callback)
 {
     console.log("serverSend");
+    // jestli neexistuje token, zaregistrovat
+    if(token=="")
+    {
+        register();
+        return;
+    }
+    console.log("token:"+token);
+
+    // TODO odregistraci
+
+    if($( "#checkBoxVypZap" ).is(':checked'))
+    {
+        var zapVyp = "true";
+    } else
+    {
+        var zapVyp = "false";
+    }
+    console.log("zapVyp:"+zapVyp);
+    var stav = $( "#stav").val();
+    console.log("stav:"+stav);
+    var ulice = $( "#ulice option:selected").text();
+    console.log("ulice:"+ulice);
     $.ajax({
-        type: 'GET',
-        url: 'http://demo.livecycle.cz/lc/content/zacpa.POST',
+        type: 'POST',
+        url: 'http://demo.livecycle.cz/lc/content/zacpa',
         data : {
-            typ: typ,
-            token: token
-        },
+            zapVyp: zapVyp,
+            token: token,
+            stav: stav,
+            ulice: ulice,
+            _charset_: "utf-8"
+},
         success: function(data) {
             console.log("serverSend success");
             success_callback();
         },
         error: function(data) {
             console.log("serverSend error");
-            ajaxError("serverSend",typ,data);
+            ajaxError("serverSend","",data);
         }
     });
 
@@ -93,7 +135,7 @@ function serverSend(typ,success_callback, error_callback)
 
 function ajaxError(source,msg,data)
 {
-    alert(source + msg);
+    alert("Error: " + source + msg);
 }
 
 function registraceOK()
@@ -102,7 +144,6 @@ function registraceOK()
     window.localStorage.setItem("token",token);
     // TODO ulozit ulice a cisla do persistance
     $("#registraceButton").val("Odregistrovat od přijímání zpráv");
-    $("#zmenitNastaveniButton").css("display","block");
 }
 function odregistraceOK()
 {
@@ -111,11 +152,17 @@ function odregistraceOK()
     token ="";
     infoZobraz("Odregistrováno");
     $("#registraceButton").val("Zaregistrovat k přijímání zpráv");
-    $("#zmenitNastaveniButton").css("display","none");
+}
+function nastaveniZmenaOk()
+{
+    // TODO aby se ukladal token jen pri registraci
+    window.localStorage.setItem("token",token);
+    infoZobraz("Nastavení změněno");
 }
 
 
 function register() {
+    console.log("Register");
     /*
     document.addEventListener("backbutton", function(e)
     {
@@ -140,10 +187,10 @@ function register() {
     {
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android') {
-            $("#app-status-ul").append('<li>registering android</li>');
+            //$("#app-status-ul").append('<li>registering android</li>');
             pushNotification.register(successHandler, errorHandler, {"senderID":"131911362908","ecb":"onNotificationGCM"});		// required!
         } else {
-            $("#app-status-ul").append('<li>registering iOS</li>');
+            //$("#app-status-ul").append('<li>registering iOS</li>');
             pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
         }
     }
@@ -158,7 +205,7 @@ function register() {
 // handle APNS notifications for iOS
 function onNotificationAPN(e) {
     if (e.alert) {
-        $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+        //$("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
         navigator.notification.alert(e.alert);
     }
 
@@ -189,7 +236,7 @@ function onNotificationGCM(e) {
                 token = e.regid;
                 // ulozi na server
                 infoZobraz("Ukládání nastavení na server");
-                serverSend("registrace",registraceOK);
+                serverSend(nastaveniZmenaOk,ajaxError);
             }
             break;
 
@@ -232,16 +279,19 @@ function onNotificationGCM(e) {
 
 function tokenHandler (result) {
     $("#app-status-ul").append('<li>token: '+ result +'</li>');
+    infoZobraz("token" + result);
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
 }
 
 function successHandler (result) {
     $("#app-status-ul").append('<li>success:'+ result +'</li>');
+    infoZobraz("success"+ result);
 }
 
 function errorHandler (error) {
     $("#app-status-ul").append('<li>error:'+ error +'</li>');
+    infoZobraz("error" + error);
 }
 
 
