@@ -50,6 +50,8 @@ function localStorageDelete()
 
 function infoZobraz(msg)
 {
+    var d = new Date();
+    msg = d.getUTCHours() + ":" + d.getMinutes() + ":" + d.getUTCSeconds() + "-" + msg;
     $("#info").html(msg);
 }
 

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aab975f2-6226-4112-a012-090c50f3b9e5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index.css" afterPath="$PROJECT_DIR$/css/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts.js" afterPath="$PROJECT_DIR$/js/scripts.js" />
@@ -28,22 +27,22 @@
     <favorites_list name="webStorm" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.33438653">
+    <splitter split-orientation="horizontal" split-proportion="0.43865192">
       <split-first>
         <leaf>
-          <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="9" column="20" selection-start="324" selection-end="324" vertical-scroll-proportion="0.16522679" vertical-offset="0" max-vertical-offset="2091">
+                <state line="28" column="0" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2091">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="53" column="44" selection-start="2367" selection-end="2367" vertical-scroll-proportion="-4.5384617" vertical-offset="783" max-vertical-offset="2159">
+                <state line="118" column="16" selection-start="5746" selection-end="5746" vertical-scroll-proportion="2.228889" vertical-offset="0" max-vertical-offset="2159">
                   <folding />
                 </state>
               </provider>
@@ -52,7 +51,7 @@
           <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/index.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="121" column="12" selection-start="3766" selection-end="3766" vertical-scroll-proportion="-14.04" vertical-offset="1706" max-vertical-offset="2788">
+                <state line="122" column="16" selection-start="3785" selection-end="3785" vertical-scroll-proportion="-14.72" vertical-offset="1706" max-vertical-offset="2788">
                   <folding />
                 </state>
               </provider>
@@ -71,10 +70,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="scripts.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="scripts.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/scripts.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="6" selection-start="304" selection-end="304" vertical-scroll-proportion="0.2045952" vertical-offset="0" max-vertical-offset="5576">
+                <state line="53" column="72" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.39400667" vertical-offset="529" max-vertical-offset="5610">
                   <folding />
                 </state>
               </provider>
@@ -95,10 +94,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/css/index.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/js/scripts.js" />
+        <option value="$PROJECT_DIR$/css/index.css" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -275,7 +274,11 @@
       <created>1392641483343</created>
       <updated>1392641483343</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="pridan cas">
+      <created>1392654247759</created>
+      <updated>1392654247759</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -317,7 +320,8 @@
     <MESSAGE value="Initial commit&#10;" />
     <MESSAGE value="registrace do CRX" />
     <MESSAGE value="registrace do CRX&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="registrace do CRX&#10;" />
+    <MESSAGE value="pridan cas" />
+    <option name="LAST_COMMIT_MESSAGE" value="pridan cas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -386,30 +390,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/index.css">
+    <entry file="file://$PROJECT_DIR$/js/scripts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="12" selection-start="3766" selection-end="3766" vertical-scroll-proportion="-14.04" vertical-offset="1706" max-vertical-offset="2788">
+        <state line="53" column="72" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.39400667" vertical-offset="529" max-vertical-offset="5610">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="41" selection-start="3982" selection-end="3982" vertical-scroll-proportion="-22.884615" vertical-offset="816" max-vertical-offset="2159">
+        <state line="122" column="16" selection-start="3785" selection-end="3785" vertical-scroll-proportion="-14.72" vertical-offset="1706" max-vertical-offset="2788">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="20" selection-start="324" selection-end="324" vertical-scroll-proportion="0.16522679" vertical-offset="0" max-vertical-offset="2091">
+        <state line="28" column="0" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2091">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="6" selection-start="304" selection-end="304" vertical-scroll-proportion="0.2045952" vertical-offset="0" max-vertical-offset="5576">
+        <state line="118" column="16" selection-start="5746" selection-end="5746" vertical-scroll-proportion="2.228889" vertical-offset="0" max-vertical-offset="2159">
           <folding />
         </state>
       </provider>
