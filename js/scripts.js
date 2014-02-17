@@ -10,7 +10,7 @@ function onDeviceReady() {
     infoZobraz("deviceready event received");
     localStorageNacti();
 
-    token = "345";
+    //token = "345";
 
 }
 
@@ -32,6 +32,12 @@ function localStorageNacti()
 
     // TODO dalsi nastaveni
 
+}
+function localStorageDelete()
+{
+    window.localStorage.clear();
+    token ="";
+    alert("deleted");
 }
 
 function infoZobraz(msg)
