@@ -20,6 +20,14 @@ function localStorageNacti()
     {
         token = window.localStorage.getItem("token");
     }
+    if(window.localStorage.getItem("casOd")!=null)
+    {
+        $( "#casOd").val(window.localStorage.getItem("casOd"));
+    }
+    if(window.localStorage.getItem("token")!=null)
+    {
+        $( "#casDo").val(window.localStorage.getItem("casDo"));
+    }
     if(window.localStorage.getItem("vypZap")!=null)
     {
         var vypZap = window.localStorage.getItem("vypZap");
@@ -124,6 +132,8 @@ function serverSend(success_callback, error_callback)
             token: token,
             stav: stav,
             ulice: ulice,
+            casOd : $( "#casOd").val(),
+            casDo : $( "#casDo").val(),
             _charset_: "utf-8"
 },
         success: function(data) {
@@ -163,6 +173,16 @@ function nastaveniZmenaOk()
 {
     // TODO aby se ukladal token jen pri registraci
     window.localStorage.setItem("token",token);
+    if($( "#checkBoxVypZap" ).is(':checked'))
+    {
+        var zapVyp = "true";
+    } else
+    {
+        var zapVyp = "false";
+    }
+    window.localStorage.setItem("zapVyp",zapVyp);
+    window.localStorage.setItem("casOd",$( "#casOd").val());
+    window.localStorage.setItem("casDo",$( "#casDo").val());
     infoZobraz("Nastavení změněno");
 }
 
